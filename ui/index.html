@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SSE example</title>
+</head>
+<body>
+    <h3>received data:</h3>
+    <ul id="data"></ul>
+    <script>
+        const listE = document.querySelector("#data");
+        const evtSource = new EventSource("../sse/");
+        evtSource.onmessage = (event)=>{
+            const newItem = document.createElement("li")
+            newItem.textContent = `message: ${event.data}`;
+            listE.appendChild(newItem);
+        };
+    </script>
+</body>
+</html>
